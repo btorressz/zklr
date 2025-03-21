@@ -113,4 +113,64 @@ Reveals an encrypted order for confidential order matching. This function simula
   - `trader_account`: The trader's protocol account.
   - `global_state`: The global state account.
     
+    
+## Account Structures
 
+### GlobalState
+Stores global protocol state.
+
+- `admin`: The admin's public key.
+- `total_staked`: Total staked tokens.
+- `total_liquidity`: Total liquidity in the protocol.
+
+### TraderAccount
+Stores trader-specific data.
+
+- `trader`: The trader's public key.
+- `staked_amount`: Confidential staked amount.
+- `is_verified`: Whether the trader is verified.
+- `proof_expiry`: Expiry timestamp of the proof.
+- `last_proof_update`: Timestamp of the last proof update.
+- `zk_proof_hash`: Hash of the zero-knowledge proof.
+- `invalid_proof_attempts`: Count of invalid proof attempts.
+- `commitment`: Commitment hash for encrypted order matching.
+- `last_stake_timestamp`: Timestamp of the last stake.
+- `speed_multiplier`: Adaptive rewards multiplier (computed from latency).
+- `trade_volume`: Confidential trade volume (used for market-making incentives).
+
+### LiquidityAccount
+Stores liquidity provider-specific data.
+
+- `lp`: The liquidity provider's public key.
+- `liquidity_provided`: Confidential liquidity amount.
+- `is_priority_pool`: Whether the account is in a priority pool.
+- `reward_balance`: Rewards balance.
+- `lock_timestamp`: Timestamp when liquidity was locked.
+- `trade_volume`: Confidential trade volume (used for market-making incentives).
+
+## Error Codes
+
+- **Overflow:** Arithmetic overflow occurred.
+- **Underflow:** Arithmetic underflow occurred.
+- **DivisionByZero:** Division by zero.
+- **InvalidZKProof:** Invalid zero-knowledge proof provided.
+- **InvalidReveal:** Invalid reveal or commitment mismatch.
+- **TraderNotVerified:** Trader is not verified for bandwidth allocation.
+- **ProofExpired:** The provided proof has expired.
+- **LockupPeriodNotElapsed:** The required lockup period has not elapsed for unstaking.
+- **InsufficientStake:** The staked amount is insufficient.
+- **RevealTooEarly:** The trade reveal was attempted too early.
+- **LiquidityLockNotElapsed:** Liquidity funds are still locked.
+
+## Constants
+
+- **PROOF_VALIDITY_PERIOD:** 3600 seconds (1 hour).
+- **FEE_PERCENTAGE:** 1% burn fee.
+- **MAX_INVALID_PROOFS:** 3 invalid proof attempts before slashing.
+- **SLASH_PERCENTAGE:** 20% of stake is slashed on repeated failures.
+- **DECAY_PERIOD:** 86400 seconds (1 day) for bandwidth priority decay.
+- **LOCKUP_PERIOD:** 3600 seconds (1 hour) lockup before unstaking.
+- **REVEAL_DELAY:** 30 seconds delay before trade reveal.
+- **PRIORITY_POOL_BONUS:** 10% bonus rewards for priority pools.
+- **MIN_CONFIDENTIAL_STAKE:** Minimum stake threshold for bandwidth allocation.
+- **LIQUIDITY_LOCK_PERIOD:** 86400 seconds (1 day) liquidity lock period.
