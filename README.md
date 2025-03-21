@@ -96,4 +96,9 @@ Deposits tokens into a confidential liquidity pool. Liquidity providers must loc
 - **Accounts:**
   - `lp`: The liquidity provider's signer account.
   - `lp_token_account`: The liquidity provider's token account.
+  - `liquidity_vault`: The vault where liquidity is stored.
+  - `lp_account`: The liquidity provider's protocol account.
+  - `global_state`: The global state account.
+  - `token_program`: The token program.
+    
 
