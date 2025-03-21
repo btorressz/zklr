@@ -100,5 +100,17 @@ Deposits tokens into a confidential liquidity pool. Liquidity providers must loc
   - `lp_account`: The liquidity provider's protocol account.
   - `global_state`: The global state account.
   - `token_program`: The token program.
+
+ 
+ ### 8. `reveal_trade`
+Reveals an encrypted order for confidential order matching. This function simulates order range verification using an additional order range proof.
+
+- **Parameters:**
+  - `actual_order`: The actual order data.
+  - `order_range_proof`: A proof verifying that the order falls within a valid range.
+- **Accounts:**
+  - `trader`: The trader's signer account.
+  - `trader_account`: The trader's protocol account.
+  - `global_state`: The global state account.
     
 
