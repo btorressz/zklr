@@ -87,4 +87,13 @@ Allows traders to withdraw staked tokens using a confidential withdrawal mechani
   - `global_state`: The global state account.
   - `token_program`: The token program.
 
+### 7. `provide_liquidity`
+Deposits tokens into a confidential liquidity pool. Liquidity providers must lock funds for a minimum period and receive bonus rewards if they are part of a priority pool. This function also tracks confidential trade volume for market-making incentives.
+
+- **Parameters:**
+  - `amount`: The amount of tokens to deposit.
+  - `trade_volume`: Confidential trade volume for market-making incentives.
+- **Accounts:**
+  - `lp`: The liquidity provider's signer account.
+  - `lp_token_account`: The liquidity provider's token account.
 
